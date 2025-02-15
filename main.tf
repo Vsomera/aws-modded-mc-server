@@ -14,9 +14,14 @@ provider "aws" {
 
 resource "aws_instance" "mc_server_ec2" {
   ami           = "ami-0606dd43116f5ed57" // ubuntu 22.04
-  instance_type = "t2.large"              // 2vcpu, 8gb ram
+  instance_type = "t3.large"              // 2vcpu, 8gb ram
+
   subnet_id     = aws_subnet.public_subnet.id
-  
+  iam_instance_profile = aws_iam_instance_profile.mc_instance_profile.name
+  # user_data = file("${path.module}/scripts/user_data.sh")
+
+  vpc_security_group_ids = [aws_security_group.mc_server_sg.id]
+
   tags = {
     Name = "mc_server_ec2"
   }
