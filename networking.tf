@@ -45,7 +45,6 @@ resource "aws_security_group" "mc_server_sg" {
   description = "Allow Minecraft server TCP/UDP traffic"
   vpc_id      = aws_vpc.mc_server_vpc.id
 
-  # Allow inbound TCP traffic on port 25565 from anywhere (Minecraft)
   ingress {
     from_port   = 25565
     to_port     = 25565
@@ -54,7 +53,6 @@ resource "aws_security_group" "mc_server_sg" {
     ipv6_cidr_blocks = ["::/0"]  # Allow from any IPv6
   }
 
-  # Allow inbound UDP traffic on port 25565 from anywhere (Minecraft)
   ingress {
     from_port   = 25565
     to_port     = 25565
@@ -63,7 +61,6 @@ resource "aws_security_group" "mc_server_sg" {
     ipv6_cidr_blocks = ["::/0"]  # Allow from any IPv6
   }
 
-  # Allow inbound TCP traffic on port 22 from anywhere (SSH)
   ingress {
     from_port   = 22
     to_port     = 22
@@ -72,7 +69,6 @@ resource "aws_security_group" "mc_server_sg" {
     ipv6_cidr_blocks = ["::/0"]  # Allow from any IPv6
   }
 
-  # Allow outbound traffic (default for EC2)
   egress {
     from_port   = 0
     to_port     = 0

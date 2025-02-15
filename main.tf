@@ -12,6 +12,11 @@ provider "aws" {
   region = "us-west-2"
 }
 
+resource "aws_key_pair" "mc_ec2_key" {
+  key_name   = "my-ec2-key"
+  public_key = file("~/.ssh/mc-ec2-key.pub")
+}
+
 resource "aws_instance" "mc_server_ec2" {
   ami           = "ami-0606dd43116f5ed57" // ubuntu 22.04
   instance_type = "t3.large"              // 2vcpu, 8gb ram
@@ -21,6 +26,7 @@ resource "aws_instance" "mc_server_ec2" {
   # user_data = file("${path.module}/scripts/user_data.sh")
 
   vpc_security_group_ids = [aws_security_group.mc_server_sg.id]
+  key_name = aws_key_pair.mc_ec2_key.key_name
 
   tags = {
     Name = "mc_server_ec2"
