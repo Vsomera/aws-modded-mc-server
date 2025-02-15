@@ -19,7 +19,7 @@ resource "aws_key_pair" "mc_ec2_key" {
 
 resource "aws_instance" "mc_server_ec2" {
   ami           = "ami-0606dd43116f5ed57" // ubuntu 22.04
-  instance_type = "t3.large"              // 2vcpu, 8gb ram
+  instance_type = "c5.xlarge"             // 4vcpu, 8gb ram
 
   subnet_id     = aws_subnet.public_subnet.id
   iam_instance_profile = aws_iam_instance_profile.mc_instance_profile.name
