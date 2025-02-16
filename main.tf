@@ -18,8 +18,8 @@ resource "aws_key_pair" "mc_ec2_key" {
 }
 
 resource "aws_instance" "mc_server_ec2" {
-  ami           = "ami-0606dd43116f5ed57" // ubuntu 22.04
-  instance_type = "c5.xlarge"             // 4vcpu, 8gb ram
+  ami           = "ami-0606dd43116f5ed57"     // ubuntu 22.04
+  instance_type = "c5.xlarge"                 // 4vcpu, 8gb ram
 
   subnet_id     = aws_subnet.public_subnet.id
   iam_instance_profile = aws_iam_instance_profile.mc_instance_profile.name
@@ -34,7 +34,7 @@ resource "aws_instance" "mc_server_ec2" {
 }
 
 resource "aws_s3_bucket" "mc_server_s3bucket" {
-  bucket = "server-bucket-mc" // may need to change this name if it is already in use
+  bucket = "server-bucket-mc"                 // change name if already in use
   
   tags = {
     Name = "mc_server_s3bucket"

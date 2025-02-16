@@ -1,0 +1,12 @@
+[Unit]
+Description=Minecraft Service
+After=default.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/minecraft
+ExecStart=/usr/bin/screen -DmS minecraft /bin/bash /minecraft/run.sh
+
+[Install]
+WantedBy=multi-user.target
