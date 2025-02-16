@@ -1,8 +1,0 @@
-[Unit]
-Description=Minecraft Service
-After=default.target
-
-[Service]
-Type=simple
-User=ubuntu
-ExecStart=/usr/bin/java -jar /minecraft/run.sh

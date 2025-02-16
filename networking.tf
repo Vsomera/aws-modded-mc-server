@@ -49,30 +49,30 @@ resource "aws_security_group" "mc_server_sg" {
     from_port   = 25565
     to_port     = 25565
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow from any IPv4
-    ipv6_cidr_blocks = ["::/0"]  # Allow from any IPv6
+    cidr_blocks = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
   }
 
   ingress {
     from_port   = 25565
     to_port     = 25565
     protocol    = "udp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow from any IPv4
-    ipv6_cidr_blocks = ["::/0"]  # Allow from any IPv6
+    cidr_blocks = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
   }
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]  # Allow from any IPv4
-    ipv6_cidr_blocks = ["::/0"]  # Allow from any IPv6
+    cidr_blocks = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
   }
 
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1" # Allow all outbound traffic
+    protocol    = "-1" # allowing all outbound traffic
     cidr_blocks = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
@@ -80,4 +80,18 @@ resource "aws_security_group" "mc_server_sg" {
   tags = {
     Name = "mc_server_sg"
   }
+}
+
+resource "aws_eip" "mc-ec2-eip" {
+  vpc = true
+  instance = aws_instance.mc_server_ec2.id
+
+  tags = {
+    Name = "mc_server_elastic_ip"
+  }
+}
+
+output "mc_ip_address" {
+  value = aws_eip.mc-ec2-eip.public_ip
+  description = "ip address for minecraft server"
 }
