@@ -1,5 +1,3 @@
-### GRANTS EC2 ACCESS TO S3 BUCKET
-
 // policy to grant ec2 access to s3
 resource "aws_iam_policy" "s3_access_policy" {
   name        = "mc-s3-bucket-access"
