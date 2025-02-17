@@ -18,3 +18,5 @@ terraform.tfvars.json
 *.tfplan
 
 .env
+
+/setup

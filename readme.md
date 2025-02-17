@@ -91,7 +91,29 @@ or
 ```
     terraform apply
 ```
+- If your s3 bucket name is already taken, run `terraform destroy` and change the name of your s3 bucket. Then run `terraform apply`
 
-## 5.) Edit `run.sh` and `jvm_args.txt` within ec2 instance
+## 5.) Edit `run.sh` and `user_jvm_args.txt` within ec2 instance
 - SSH or visit AWS console to access the running ec2 instance
-- . . .
+- Add changes to `./run.sh` : 
+```
+    java @user_jvm_args.txt @libraries/net/minecraftforge/forge/1.20.1-47.3.0/unix_args.txt --nogui "$@"
+```
+- Configure `user_jvm_args.txt` (uncomment the last line)
+```
+    -Xmx7G (ram allocation)
+```
+
+## 6.) Start server
+```
+    ./run.sh
+```
+or
+```
+    sudo systemctl start minecraft
+```
+
+- you can also run commands in the console using `screen`:
+```
+    screen -r minecraft
+```
