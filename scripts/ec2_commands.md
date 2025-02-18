@@ -3,7 +3,7 @@
 [. . /readme.md](../readme.md)
 - Server files are stored in `/minecraft`
 ```
-/minecraft
+cd /minecraft
 ```
 
 ### 1.) download contents from s3 bucket

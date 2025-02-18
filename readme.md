@@ -65,7 +65,7 @@ terraform apply
 
 #### b.) Upload Files to s3 Bucket 
 - Navigate to AWS [s3 console](https://us-west-2.console.aws.amazon.com/s3/)
-- Upload the following files to the `/setup` folder inside your s3 bucket:
+- Upload the following files to the `/setup` folder inside your s3 bucket :
 ```
     REQUIRED:
         - loader-x.xx.x-xx.x.x-installer.jar
