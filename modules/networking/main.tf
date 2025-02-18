@@ -82,16 +82,10 @@ resource "aws_security_group" "mc_server_sg" {
   }
 }
 
-resource "aws_eip" "mc-ec2-eip" {
-  vpc = true
-  instance = aws_instance.mc_server_ec2.id
-
-  tags = {
-    Name = "mc_server_elastic_ip"
-  }
+output "public_subnet_id" {
+  value = aws_subnet.public_subnet.id
 }
 
-output "mc_ip_address" {
-  value = aws_eip.mc-ec2-eip.public_ip
-  description = "ip address for minecraft server"
+output "mc_server_sg_id" {
+  value = aws_security_group.mc_server_sg.id
 }

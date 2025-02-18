@@ -4,7 +4,7 @@
         {
             "Effect": "Allow",
             "Action": ["s3:ListBucket"],
-            "Resource": ["arn:aws:s3:::< s3_bucket_name >"]
+            "Resource": ["arn:aws:s3:::s3_bucket_name"]
         },
         {
             "Effect": "Allow",
@@ -16,7 +16,7 @@
                 "s3:PutObjectAcl",
                 "s3:DeleteObject"
             ],
-            "Resource": ["arn:aws:s3:::< s3_bucket_name >/*"]
+            "Resource": ["arn:aws:s3:::s3_bucket_name/*"]
         }
     ]
 }

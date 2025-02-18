@@ -3,14 +3,14 @@ resource "aws_iam_policy" "s3_access_policy" {
   name        = "mc-s3-bucket-access"
   description = "Allows mc ec2 instance to access S3 bucket"
 
-  policy = file("${path.module}/config/s3_policy.json")
+  policy = file("${path.root}/config/s3_policy.json")
 }
 
 // iam role for ec2 instance
 resource "aws_iam_role" "mc_ec2_role" {
   name = "mc-ec2-role"
 
-  assume_role_policy = file("${path.module}/config/ec2_role.json")
+  assume_role_policy = file("${path.root}/config/ec2_role.json")
 }
 
 // attaches iam policy to the iam role
@@ -23,4 +23,8 @@ resource "aws_iam_role_policy_attachment" "mc_s3_policy_attach" {
 resource "aws_iam_instance_profile" "mc_instance_profile" {
   name = "mc-ec2-instance-profile"
   role = aws_iam_role.mc_ec2_role.name
+}
+
+output "iam_instance_profile_name" {
+  value = aws_iam_instance_profile.mc_instance_profile.name
 }
