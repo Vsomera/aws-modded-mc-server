@@ -20,8 +20,8 @@ Setup the following :
 Clone repo with git :
 
 ```bash
-    git clone github.com/...
-    cd / ...
+    git clone https://github.com/Vsomera/aws-modded-mc-server.git
+    cd /aws-modded-mc-server
 ```
 
 ## 1.) Configure files

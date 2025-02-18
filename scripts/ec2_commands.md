@@ -49,7 +49,7 @@ java @user_jvm_args.txt @libraries/net/minecraftforge/forge/1.20.1-47.3.0/unix_a
 - Configure `user_jvm_args.txt` (uncomment the last line) set number to how much ram you want to allocate to minecraft
 ```bash
 // user_jvm_args.txt
--Xmx7G
+-Xmx6G
 ```
 
 
