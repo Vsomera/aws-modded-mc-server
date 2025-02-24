@@ -1,12 +1,21 @@
 [Unit]
 Description=Minecraft Service
-After=default.target
+After=network.target
 
 [Service]
-Type=simple
-User=ubuntu
 WorkingDirectory=/minecraft
-ExecStart=/bin/bash /minecraft/run.sh
+User=ubuntu
+
+ExecStart=/usr/bin/screen -DmS minecraft /bin/bash /minecraft/run.sh
+
+ExecStop=/usr/bin/screen -p 0 -S minecraft -X eval 'stuff "say SERVER SHUTTING DOWN IN 5 SECONDS. SAVING ALL MAPS..."\015'
+ExecStop=/bin/sleep 5
+ExecStop=/usr/bin/screen -p 0 -S minecraft -X eval 'stuff "save-all"\015'
+ExecStop=/usr/bin/screen -p 0 -S minecraft -X eval 'stuff "stop"\015'
+ExecStop=/bin/sleep 5
+ExecStop=/usr/bin/screen -S minecraft -X quit || true
+
+SuccessExitStatus=1
 
 [Install]
 WantedBy=multi-user.target
