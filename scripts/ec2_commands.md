@@ -41,10 +41,10 @@ java -jar loader-x.xx.x-xx.x.x-installer.jar --installServer
 ```
 
 ### 5.) Edit `run.sh` and `user_jvm_args.txt`
-- Add changes to last line of `./run.sh` : 
+- Add `--nogui` flag to the end of the last line  `./run.sh` : 
 ```bash
 // run.sh
-java @user_jvm_args.txt @libraries/net/minecraftforge/forge/1.20.1-47.3.0/unix_args.txt --nogui "$@"
+java @user_jvm_args.txt @libraries/net/minecraftloader/loader/x.xx.x-xx.x.x/unix_args.txt --nogui "$@"
 ```
 - Configure `user_jvm_args.txt` (uncomment the last line) set number to how much ram you want to allocate to minecraft
 ```bash
