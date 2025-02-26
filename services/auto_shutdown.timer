@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Auto Shutdown Script every 5 minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+Unit=auto_shutdown.service
+
+[Install]
+WantedBy=timers.target

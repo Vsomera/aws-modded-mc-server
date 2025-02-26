@@ -1,6 +1,6 @@
-# Ec2 Commands
+# Ec2 Configuration
 
-[. . /readme.md](../readme.md)
+[readme.md](readme.md)
 - Server files are stored in `/minecraft`
 ```
 cd /minecraft

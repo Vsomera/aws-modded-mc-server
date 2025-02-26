@@ -1,0 +1,8 @@
+[Unit]
+Description=Auto Shutdown Service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/auto_shutdown
+
+ExecStart=/bin/bash /auto_shutdown/auto_shutdown.sh

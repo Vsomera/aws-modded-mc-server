@@ -69,7 +69,7 @@ terraform apply
 ```
     REQUIRED:
         - loader-x.xx.x-xx.x.x-installer.jar
-        - minecraft.service (provided in directory)
+        - minecraft.service (provided in services dir.)
 
     OPTIONAL
         - mods.zip
@@ -83,4 +83,4 @@ terraform apply
 ```bash
     ssh -i ~/.ssh/mc-ec2-key ubuntu@x.xxx.xx.x
 ```
-- Run the following commands located in [`ec2_commands.md`](/scripts/ec2_commands.md) within your ec2 instance
+- Run the following commands located in [`commands.md`](commands.md) within your ec2 instance
